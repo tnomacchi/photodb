@@ -10,13 +10,21 @@ label > input {
 label {
 	color: white;
 	background-color: #4444AA;
+    width: 200px;
+	padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック  Medium', meiryo, sans-serif;
+}
+label.up {
+	color: white;
+	background-color: #AA4444;
+    width: 200px;
 	padding: 20px;
     font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック  Medium', meiryo, sans-serif;
 }
 </style>
 </head>
 <body>
-<h1>TEST</h1>
+<h1>Photo Database (under construction...)</h1>
 <?php
 try{
     if(is_uploaded_file($_FILES['file']['tmp_name'])){
@@ -35,7 +43,9 @@ if($_FILES['file']){
   <label for="file_photo">カメラで撮影
   <input type="file" name="file" accept="image/*" id="file_photo" capture="environment" />
   </label>
+  <label for="upload" class="up" >アップロード
   <input type="submit" value="ファイルをアップロードする">
+  </label>
 </form>
 </body>
 </html>
