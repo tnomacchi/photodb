@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" /><title>2015-12-05 1st - js do it</title>
+<meta name="Description" content="jsdo.it - share JavaScript, HTML5 and CSS - " />
+<meta name="Keywords"  content="JavaScript,HTML5,CSS" />
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+
+<style type="text/css"></style></head>
+<body>
+<form>
+    <input type="file">
+</form>
+
+<div class="preview" />
+<script type="text/javascript" src="/lib/jquery-2.1.0/js"></script>
+
+<script type="text/javascript">
+$(function(){
+  //画像ファイルプレビュー表示
+  $('form').on('change', 'input[type="file"]', function(e) {
+    var file = e.target.files[0],
+        reader = new FileReader(),
+        $preview = $(".preview");
+        t = this;
+
+    // 画像ファイル以外の場合は何もしない
+    if(file.type.indexOf("image") < 0){
+      return false;
+    }
+
+    reader.onload = (function(file) {
+      return function(e) {
+        $preview.empty();
+        $preview.append($('<img>').attr({
+                  src: e.target.result,
+                  width: "150px",
+                   class: "preview",
+                  title: file.name
+              }));
+      };
+    })(file);
+
+    reader.readAsDataURL(file);
+  });
+});
+
+</script>
+</body>
+</html>
